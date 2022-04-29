@@ -1,9 +1,9 @@
 # MAS286_A3: UoS MAS286 Assignment 3 Code
 
-Here are two *shiny* apps, *GDPvsH* and *GDPvsH_al*.
+Here are two *shiny* apps, **GDPvsH** and **GDPvsH_al**.
 
-Difference: *GDPvsH* uses the package *ggpubr*, combining two plots into a single *ggplot2* object, in order to set the layout of the output.
+Difference: **GDPvsH** uses the package *ggpubr*, combining two plots into a single *ggplot2* object, in order to set the layout of the output.
 
-While *GDPvsH_al* uses only the package *shiny* to set the layout.
+While **GDPvsH_al** uses only the package *shiny* to set the layout.
 
-The size of plots in *GDPvsH_al* is larger. 
+The size of plots in **GDPvsH_al** is larger. 
