@@ -21,7 +21,7 @@ library(ggrepel)
 # Load datasets and map data
 data1 <- read.csv("data1.csv")
 data2 <- read.csv("data2.csv")
-mapdata <- map_data("world")
+map <- map_data("world")
 
 # Define UI for application
 ui <- fluidPage(
@@ -119,7 +119,7 @@ server <- function(input, output) {
       label_df <- df1 %>% filter(df1$z >= mean(df1$z)/3)
 
 #   Combine the original map data and the data for the second plot (df2) together:       
-      mapdata <- left_join(mapdata, df2, by="region")
+      mapdata <- left_join(map, df2, by="region")
       
       
 # Make the first plot:      
