@@ -1,5 +1,4 @@
-# MAS286_A3: 
-UoS MAS286 Assignment 3 Code
+# MAS286_A3: UoS MAS286 Assignment 3 Code
 
 Here are two *shiny* apps, **GDPvsH** and **GDPvsH_al**.
 
