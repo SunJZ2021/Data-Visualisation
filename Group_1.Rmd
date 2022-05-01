@@ -1,0 +1,92 @@
+---
+title: "MAS286 Topic 3: Data Visualisation"
+output: pdf_document
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r include=FALSE}
+library(readxl)
+pwt100 <- read_excel("pwt100.xlsx", sheet = "Data")
+data1 <- read.csv("data1.csv")
+data2 <- read.csv("data2.csv")
+```
+
+# Data Origins
+
+After searching on the internet, we finally chose an interesting dataset that includes information on relative levels of income, output, input and productivity for about 183 countries throughout the years (between 1950 and 2019). This data comes from a website called *Penn World Table version 10.0* and is available at <https://www.rug.nl/ggdc/productivity/pwt/>. 
+
+We chose this dataset because it gives enough information that can be helpful for the plots we will make.
+
+The first few rows of the raw data are shown below:
+
+```{r echo=FALSE}
+head(pwt100)
+```
+
+# Research Questions
+
+Our visualization mainly attempts to address the question "Do workers in richer countries work longer hours?". Hence, we first looked at the relationship between annual working hours and GDP per capita in each country. Simultaneously, through the change in time, it is more intuitive to judge whether there is a certain connection between the GDP growth and average working hours of a country. 
+
+A further question, "Do workers in countries with higher labor productivity work longer hours?", may be asked. Therefore, we also dug into the relationship between annual working hours and labor productivity.
+
+# Data Preparation
+In our raw dataset, the relevant variables are: "real GDP" (*rgdpo*), "average annual hours worked by persons engaged" (*avh*), "population" (*pop*) and the "population engaged" (*emp*). The meanings of these variables are as follows: 
+
+- Real GDP (*rgdpo*): real gross domestic product, a measure of a country's economic output. 
+- Average annual hours worked by persons engaged (*avh*): the amount of real gross domestic product (GDP) produced by an hour of labor, which equals to the total number of hours actually worked per year divided by the average number of people in employment per year.
+- Population (*pop*): the whole population of every country in millions. 
+- Population engaged (*emp*): the population that is working in the country in millions. 
+
+Since the programming was done in two different parts using the same raw data, two different **csv** files are provided in our folder.
+
+In both **csv** files, the raw data has been cleaned by deleting the columns where variables were not needed. GDP per capita was not available in the raw data, therefore, we created an additional column consisting this, dividing the real GDP by the population of the country. Similarly, we added a column consisting "Labor productivity", which was real GDP divided by the multiplication of Annual working hours(per engaged person) and Population engaged. 
+
+For the first **csv** file, we deleted all the rows which contained missing values and added a column containing countries' continents. 
+
+For the second **csv** file, as we were thinking that we would like to create a choropleth map plot, we had to use the 'maps' package in R, which included a world map, with a data including different county names and their corresponding coordinates. This data and our excel sheet data we had chosen from the website called 'Penn World Table version 10.0' had the names of the countries written differently. Hence, for us to be able to link them together in our R code, we had to link the county names in "maps" package with our excel sheet data in the exact same way, or else the data would not have been shown. We had to manually change some country names in the excel data in order to match the "maps" R package. Moreover, as some data were not present, some counties are still missing.
+
+The first few rows of the processed data:
+
+The First dataset:
+```{r echo=FALSE}
+head(data1)
+```
+The second dataset:
+```{r echo=FALSE}
+head(data2)
+```
+
+# Visualisations
+\begin{figure}[hp]
+\label{Figure1}
+\begin{center}
+\includegraphics[width=16cm]{1.jpg}
+\end{center}
+\caption{The relationship between annual working hours and GDP per capita, and GDP per capita around the world in 2019.}
+\end{figure}
+\begin{figure}[hp]
+\label{Figure2}
+\begin{center}
+\includegraphics[width=16cm]{2.jpg}
+\end{center}
+\caption{The relationship between annual working hours and labour productivity, and labour productivity around the world in 2019.}
+\end{figure}
+
+## 1st Graph (Scatter plot): 
+We have used the package shiny to produce an interactive plot application, where the viewer can change and select which variable to look over; the "GDP per capita" and the "Labor productivity". Also, the viewer is invited to look over the change in years. As our plot is interactive, when the viewer can choose between the x-axis being "GDP per capita" or "Labor productivity". In both cases the y-axis stays the same which represents the "Annual working hours (per engaged person). The viewer can determine whether the variable on the x-axis is linear or exponential. Within our first plot, when the "GDP per capita" is chosen, the size of the dots stand for the population (in millions). When the "Labor productivity" is chosen, the size of the dots represents the population engaged. Furthermore, the different colors of the circles on the graph, stand for the continent. The blue line on the graph reveals the regression line and the grey section is the confidence interval to 95%. 
+
+## 2nd Graph (Choropleth map) : 
+This is also an interactive plot, where the viewer can change between "GDP per capita" and "Labor productivity". Any year can be selected by the slider bar. Within this plot, we have shown the GDP per capita or labor productivity using a choropleth map. The reason we have selected to show this information on such plot, is because it visually can look good to the viewer and it makes it easy to understand the bigger picture. Within our choropleth map we can show the data selected as colors. They are shaded using two colors(blue and red), where red represents high numbers and blue represents low numbers (the key explains what the different shades mean). At our attempt to show this in our plot, we figured that some counties had no data, therefore, we illustrated them in a grey color.
+
+The shiny application is attached in the zipped folder.
+
+# Summary
+In this assignment, we learnt how to make charts using R and how to make visual charts using Shiny applications. We have used ggplot2 to create the chart, which uses buttons to command mobile data from 1950 to 2019. Working on our main question "Do workers in richer countries work longer hours?" the answer we have come out with is that workers in poorer countries actually tend to work more, and sometimes much more. 
+
+If we had more time for our project we could have looked into more details and information. Such as the relationship of the GDP per capita and Annual working hours. Also, in regards to the data we have found, we think that if we had complete data, this would have helped us fill in the missing counties.
