@@ -1,7 +1,7 @@
 # Data Visualisation: Relationship between Annual Working Hours and GDP per Capita, Relationship between Annual Working Hours and Labor Productivity
 ## University of Sheffield, MAS286 Assignment 3 Code
 
-This data visualization project mainly attempts to address the question “Do workers in richer countries work longer hours?”. Hence, the relationship between annual working hours and GDP per capita in each country was first looked at. (Through the change in time, it is more intuitive to judge whether there is a certain connection between the GDP growth and average working hours of a country.) A further question, “Do workers in countries with higher labor productivity work longer hours?”, may be asked. Therefore, the relationship between annual working hours and labor productivity was also dug into.
+The amount and complexity of data have increased since the advent of the big data era. However, in the form of data frames, it is difficult for ordinary people to obtain relevant information quickly and accurately. By transforming invisible data phenomena into visible graphic symbols, this project provides a straightforward answer to the questions, "Do workers in richer countries work longer hours?" and "Do workers in higher labour productivity countries work longer hours?"
 
 The data comes from a website called **Penn World Table version 10.0** and is available at https://www.rug.nl/ggdc/productivity/pwt/.
 
